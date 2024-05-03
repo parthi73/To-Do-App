@@ -1,48 +1,31 @@
-const inputBox=document.getElementById("input-Box");
-const listContainer=document.getElementById("List-container");
-const li=document.querySelector("li");
+const inputBox = document.getElementById("input-box");
 
-function myFunction(){
-    if(inputBox.value==="")
-    {
+function myFunction() {
+    if (inputBox.value === "") {
         alert("Enter your To Do list !");
-        saveData();
-        showList();
-
     }
-    else{
-        var li=document.createElement('li');
-        li.innerHTML=inputBox.value;
-        listContainer.appendChild(li);
+    else {
+        const listContainer = document.getElementById("list-container");
+        let listItem = document.createElement("div");
+        listItem.classList.add("list-item");
 
-        li.addEventListener('click', makethrough);
 
-        listContainer.appendChild(li);
-        let span=document.createElement('span');
-        span.innerHTML="\u00d7";
-        li.appendChild(span);
+        const itemText = document.createElement("p");
+        let data = inputBox.value;
+        itemText.textContent = data;
+        listItem.appendChild(itemText);
 
-        span.addEventListener('click', function() {
-            this.parentElement.remove();
-            showList();
+        inputBox.value = "";
 
+
+        let deleteButton = document.createElement("button");
+        deleteButton.textContent = "X";
+        deleteButton.classList.add("delete-button");
+        deleteButton.addEventListener("click", function () {
+            listItem.remove();
         });
-        
+
+        listItem.appendChild(deleteButton);
+        listContainer.appendChild(listItem);
     }
-    inputBox.value="";
-    li.appendChild(span);
-    saveData();
-    
 }
-
-function makethrough() {
-    this.classList.toggle('lineThrough');
-}
-
-function saveData(){
-    localStorage.setItem("data",listContainer.innerHTML);
-}
-function showList(){
-    listContainer.innerHTML=localStorage.getItem("data");
-}
-showList();
