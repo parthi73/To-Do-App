@@ -64,7 +64,7 @@ input {
 }
 
 ul li {
-    list-style: none;
+    list-style: disc;
     font-size: 17px;
     padding: 12px 8px 12px 50px;
     user-select: none;
@@ -95,5 +95,8 @@ ul li {
 }
 .delete-button:hover{
     background-color: #d1c7c7;
+    cursor: pointer;
+}
+p{
     cursor: pointer;
 }

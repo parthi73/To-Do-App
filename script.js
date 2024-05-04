@@ -10,10 +10,14 @@ function myFunction() {
         listItem.classList.add("list-item");
 
 
-        const itemText = document.createElement("p");
+        let itemText = document.createElement("p");
         let data = inputBox.value;
         itemText.textContent = data;
+        itemText.addEventListener("click", function () {
+            this.classList.toggle("lineThrough");
+        });
         listItem.appendChild(itemText);
+
 
         inputBox.value = "";
 
@@ -23,8 +27,10 @@ function myFunction() {
         deleteButton.classList.add("delete-button");
         deleteButton.addEventListener("click", function () {
             listItem.remove();
+
         });
 
+     
         listItem.appendChild(deleteButton);
         listContainer.appendChild(listItem);
     }
